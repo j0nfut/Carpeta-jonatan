@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1742397599 source:c:\users\jonat\onedrive\escritorio\cursos\programas del curso de c\programa133\main.c
+	<stdio.h>
+	<conio.h>
+	<string.h>
+
