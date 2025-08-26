@@ -45,6 +45,7 @@ int main()
             printf("Ambos productos tienen el mismo precio.");
         }
     }
+    printf("\nEsta ready el git");
     getch();
     return 0;
 }
