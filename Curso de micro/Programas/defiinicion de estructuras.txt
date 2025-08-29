@@ -1,0 +1,85 @@
+#define RCC     ((RRC_RegDef_t*)RCC_BASEADDR)
+#define RCC_BASEADDR       (AHB1PERIPH_BASEADDR + 0x1000)
+
+typedef struct
+{
+    __vo uint32_t CR;
+    __vo uint32_t CFGR;
+    __vo uint32_t CIR;
+    __vo uint32_t APB2RSTR;
+    __vo uint32_t APB1RSTR;
+    __vo uint32_t AHBENR;
+    __vo uint32_t APB2ENR;
+    __vo uint32_t APB1ENR;
+    __vo uint32_t BDCR;
+    __vo uint32_t CSR;
+    __vo uint32_t AHBRSTR;
+    __vo uint32_t CFGR2;
+    __vo uint32_t CFGR3;
+}RRC_RegDef_t;
+
+
+/* Macros para habilitar los clock de los GPIO*/
+#define GPIOA_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 17 ) )
+#define GPIOB_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 18 ) )
+#define GPIOC_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 19 ) )
+#define GPIOD_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 20 ) )
+#define GPIOE_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 21 ) )
+#define GPIOF_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 22 ) )
+#define GPIOG_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 23 ) )
+#define GPIOH_PCLK_EN()   ( RCC->AHB1ENR |= ( 1 << 16 ) )
+
+/* Macros para habilitar los clock de los I2C*/
+#define I2C1_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 21 ) )
+#define I2C2_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 22 ) )
+#define I2C3_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 30 ) )
+
+/* Macros para habilitar los clock de los SPI*/
+#define SPI1_PCLK_EN()  ( RCC->APB2ENR |= ( 1 << 12 ) )
+#define SPI2_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 14 ) )
+#define SPI3_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 15 ) )
+#define SPI4_PCLK_EN()  ( RCC->APB2ENR |= ( 1 << 15 ) )
+
+
+/* Macros para habilitar los clock de los USARTx*/
+#define USART1_PCLK_EN()  ( RCC->APB2ENR |= ( 1 << 14 ) )
+#define USART2_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 17 ) )
+#define USART3_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 18 ) )
+#define UART4_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 19 ) )
+#define UART5_PCLK_EN()  ( RCC->APB1ENR |= ( 1 << 20 ) )
+
+/* Macros para habilitar los clock de los SYSCFG*/
+#define SYSCFG_PCLK_EN()  ( RCC->APB2ENR |= ( 1 << 0 ) )
+
+/* Macros para deshabilitar los clock de los GPIO*/
+#define GPIOA_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 17 ) )
+#define GPIOB_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 18 ) )
+#define GPIOC_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 19 ) )
+#define GPIOD_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 20 ) )
+#define GPIOE_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 21 ) )
+#define GPIOF_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 22 ) )
+#define GPIOG_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 23 ) )
+#define GPIOH_PCLK_DI()   ( RCC->AHB1ENR &= ~( 1 << 16 ) )
+
+/* Macros para deshabilitar los clock de los I2C*/
+
+#define I2C1_PCLK_DI()  ( RCC->APB1ENR &= ~( 1 << 21 ) )
+#define I2C2_PCLK_DI()  ( RCC->APB1ENR &= ~( 1 << 22 ) )
+#define I2C3_PCLK_DI()  ( RCC->APB1ENR &= ~( 1 << 30 ) )
+
+/* Macros para deshabilitar los clock de los SPI*/
+#define SPI1_PCLK_DI()  ( RCC->APB2ENR &= ~( 1 << 12 ) )
+#define SPI2_PCLK_DI()  ( RCC->APB1ENR &= ~( 1 << 14 ) )
+#define SPI3_PCLK_DI()  ( RCC->APB1ENR &= ~( 1 << 15 ) )
+#define SPI4_PCLK_DI()  ( RCC->APB2ENR &= ~( 1 << 15 ) )
+
+
+/* Macros para deshabilitar los clock de los USARTx*/
+#define USART1_PCLK_DE()  ( RCC->APB2ENR &= ~( 1 << 14 ) )
+#define USART2_PCLK_DE()  ( RCC->APB1ENR &= ~( 1 << 17 ) )
+#define USART3_PCLK_DE()  ( RCC->APB1ENR &= ~( 1 << 18 ) )
+#define UART4_PCLK_DE()  ( RCC->APB1ENR &= ~( 1 << 19 ) )
+#define UART5_PCLK_DE()  ( RCC->APB1ENR &= ~( 1 << 20 ) )
+
+/* Macros para deshabilitar los clock de los SYSCFG*/
+#define SYSCFG_PCLK_DI()  ( RCC->APB2ENR &= ~( 1 << 0 ) )
