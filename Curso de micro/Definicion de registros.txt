@@ -1,0 +1,85 @@
+/*
+ * Stm32f302xx.h
+ *
+ *  Created on: Aug 26, 2025
+ *      Author: jonat
+ */
+
+#ifndef INC_STM32F302XX_H_
+#define INC_STM32F302XX_H_
+
+#include <stdint.h>
+#define __VO volatile
+
+#define SRAM1_BASEADDR		0x20000000U /*Direccion de memoria de la SRAM*/
+#define FLASH_BASEADDR      0x08000000U /*Direccion de memoria de la Flash memory*/
+#define SRAM				SRAM1_BASEADDR /*Variable SRAM*/
+
+/* AHBx y APBx dierecciones de memria*/
+#define ERIPH_BASEA		    0x40000000U
+#define AHB1PERIPH_BASE     0x40020000U
+#define AHB2PERIPH_BASE	    0x48000000U
+#define APB1PERIPH_BASE		0x40010000U
+#define APB2PERIPH_BASE		ERIPH_BASEADDR
+#define AHB3PERIPH_BASE		0x50000000U
+#define AHB4PERIPH_BASE		0x60000000U
+
+/*Direccion de memoria de los perifericos conectados al AHB2 (GPIO)*/
+#define GPIOA_BASEADDR			(AHB2PERIPH_BASE + 0x0000)
+#define GPIOB_BASEADDR			(AHB2PERIPH_BASE + 0x4000)
+#define GPIOC_BASEADDR			(AHB2PERIPH_BASE + 0x8000)
+#define GPIOD_BASEADDR			(AHB2PERIPH_BASE + 0x0C00)
+#define GPIOE_BASEADDR			(AHB2PERIPH_BASE + 0x1000)
+#define GPIOF_BASEADDR			(AHB2PERIPH_BASE + 0x1400)
+#define GPIOG_BASEADDR			(AHB2PERIPH_BASE + 0x1800)
+#define GPIOH_BASEADDR			(AHB2PERIPH_BASE + 0x1C00)
+/*Direccion de memoria de los perifericos conectados al APB1(GPIO)*/
+#define TIM2_BASEADDR		(APB1PERIPH_BASE +  0x0000)/*TIM2 direccion de memoria*/
+#define TIM3_BASEADDR		(APB1PERIPH_BASE +  0x0400)/*TIM3 direccion de memoria*/
+#define TIM4_BASEADDR		(APB1PERIPH_BASE +  0x0800)/*TIM4 direccion de memoria*/
+#define TIM6_BASEADDR		(APB1PERIPH_BASE +  0x1000)/*TIM6 direccion de memoria*/
+#define I2C1_BASEADDR		(APB1PERIPH_BASE +  0x5400)/*I2C direccion de memoria*/
+#define I2C2_BASEADDR		(APB1PERIPH_BASE +  0x5800)/*I2C2 direccion de memoria*/
+#define I2C3_BASEADDR		(APB1PERIPH_BASE +  0x7800)/*I2C3 direccion de memoria*/
+#define USART2_BASEADDR		(APB1PERIPH_BASE +  0x4400)/*USART2 direccion de memoria*/
+#define USART3_BASEADDR		(APB1PERIPH_BASE +  0x0400)/*USART3 direccion de memoria*/
+#define UART4_BASEADDR		(APB1PERIPH_BASE +  0x4C00)/*UART4 direccion de memoria*/
+#define UART5_BASEADDR		(APB1PERIPH_BASE +  0x5000)/*UART direccion de memoria*/
+#define SPI2_BASEADDR		(APB1PERIPH_BASE +  0x3800)/*SPI2 direccion de memoria*/
+#define SPI3_BASEADDR		(APB1PERIPH_BASE +  0x3C00)/*SPI3 direccion de memoria*/
+/*Direccion de memoria de los perifericos conectados al APB2(GPIO)*/
+#define EXTI_BASEADDR		(APB2PERIPH_BASE +  0x0400)/*EXTI direccion de memoria*/
+#define SYSCFG_BASEADDR		(APB2PERIPH_BASE +  0x0000)/*SYSCFG direccion de memoria*/
+#define USART1_BASEADDR		(APB2PERIPH_BASE +  0x3800)/*USART1 direccion de memoria*/
+#define EXTI_BASEADDR		(APB2PERIPH_BASE +  0x0400)/*EXTI direccion de memoria*/
+#define TIM15_BASEADDR		(APB2PERIPH_BASE +  0x4000)/*TIM15 direccion de memoria*/
+#define TIM16_BASEADDR		(APB2PERIPH_BASE +  0x4400)/*TIM16 direccion de memoria*/
+#define TIM17_BASEADDR		(APB2PERIPH_BASE +  0x4800)/*TIM17 direccion de memoria*/
+
+/* REGISTRO DE DEFINICION DE ESTRUCTURA DE LOS PERIFERICOS*/
+
+typedef struct
+{
+	__VO uint32_t MODER;			/* offset   0x00*/
+	__VO uint32_t OTYPER;		/* offset   0x04*/
+	__VO uint32_t OSPEEDR;		 /* offset  0x08*/
+	__VO uint32_t PUPDR;			/* offset   0x0C*/
+	__VO uint32_t IDR;			/* offset   0x10*/
+	__VO uint32_t ODR;			/* offset   0x14*/
+	__VO uint32_t BSRR;			/* offset   0x18*/
+	__VO uint32_t LCKR;			/* offset   0x1C*/
+	__VO uint32_t AFRL;			/* offset   0x20*/
+	__VO uint32_t AFRH;			/* offset   0x24*/
+
+}GPIO_RegDef_t;
+
+/* Definicion de los perifericos*/
+#define GPIOA  	((GPIO_RegDef_t*)GPIOA_BASEADDR)
+#define GPIOB  	((GPIO_RegDef_t*)GPIOB_BASEADDR)
+#define GPIOC 	((GPIO_RegDef_t*)GPIOC_BASEADDR)
+#define GPIOD  	((GPIO_RegDef_t*)GPIOD_BASEADDR)
+#define GPIOE  	((GPIO_RegDef_t*)GPIOE_BASEADDR)
+#define GPIOF  	((GPIO_RegDef_t*)GPIOF_BASEADDR)
+#define GPIOG  	((GPIO_RegDef_t*)GPIOG_BASEADDR)
+#define GPIOH  	((GPIO_RegDef_t*)GPIOH_BASEADDR)
+#endif /* INC_STM32F302XX_H_ */
